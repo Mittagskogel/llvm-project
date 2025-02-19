@@ -330,7 +330,7 @@ bool CodeGenAction::beginSourceFileAction() {
   addDependentLibs(*mlirModule, ci);
   addAMDGPUSpecificMLIRItems(*mlirModule, ci);
 
-  if (enzymePreprocessMLIRModule(mlirModule.get()).failed())
+  if (enzymePreprocessMLIRModule(*mlirModule.get()).failed())
     return false;
 
   // run the default passes.
