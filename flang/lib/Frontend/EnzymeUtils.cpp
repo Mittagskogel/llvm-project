@@ -89,7 +89,7 @@ mlir::LogicalResult enzymePreprocessMLIRModule(mlir::ModuleOp _mlirModule) {
 
         auto useRange = mlir::SymbolTable::getSymbolUses(f, symbolTable);
         if (!useRange) {
-          llvm::errs() << "COuld not find use range, aborting.\n";
+          llvm::errs() << "Could not find use range, aborting.\n";
           return mlir::failure();
         }
 
