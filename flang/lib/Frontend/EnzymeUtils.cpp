@@ -16,7 +16,8 @@ mlir::LogicalResult enzymePreprocessMLIRModule(mlir::ModuleOp _mlirModule) {
   for (auto &op : mlirModule->getOps()) {
     LLVM_DEBUG(op.dump());
     if (auto f = mlir::dyn_cast<mlir::func::FuncOp>(&op)) {
-      if (f.getName().contains("__enzyme_")) {
+      if (f.getName().contains("__enzyme_truncate_op_func") ||
+          f.getName().contains("__enzyme_truncate_mem_func")) {
         LLVM_DEBUG(llvm::errs() << "ENZYME\n");
 
         std::optional<mlir::SymbolRefAttr> symbol;
